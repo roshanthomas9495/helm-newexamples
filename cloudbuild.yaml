@@ -3,7 +3,13 @@ steps:
     entrypoint: /bin/bash
     args: 
       - -c
-      - |
-        gcloud compute scp --recurse ./ ftwomicroinstance:~/deploymentscripts/hello-world/ --zone=asia-south1-a --tunnel-through-iap
- #       # gcloud compute ssh ftwomicroinstance --zone=asia-south1-a --project jmc-devsecops --command 'chmod 777 ~/deploymentscripts/deployment.sh'
+      - |  # Inline script
+        # Grant temporary permissions (not recommended for production)
+        # Uncomment if `ftwomicroinstance` user lacks write access
+        #gcloud compute ssh ftwomicroinstance --zone=asia-south1-a --project jmc-devsecops --command 'chmod 777 ~/deploymentscripts/deployment.sh'
 
+        # Ensure gcloud is configured for the correct project
+        gcloud config set project <project-id>  # Replace with your project ID
+
+        # Perform SCP with verified paths and zone
+        gcloud compute scp --recurse ./ ftwomicroinstance:~/deploymentscripts/hello-world/ --zone=asia-south1-a --tunnel-through-iap
