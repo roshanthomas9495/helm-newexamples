@@ -4,6 +4,6 @@ steps:
     args: 
       - '-c'
       - |
-        gcloud compute scp --recurse ./ ftwomicroinstance:~/deploymentscripts/hello-world/ \
+        gcloud compute scp --recurse ./ ftwomicroinstance:~/deploymentscripts/ \
          --zone=asia-south1-a \
          --tunnel-through-iap
