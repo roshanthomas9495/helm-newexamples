@@ -1,14 +1,12 @@
 steps:
   - name: 'gcr.io/cloud-builders/gcloud'  # Use the official gcloud builder image
-    entrypoint: '/bin/bash'
+    entrypoint: /bin/bash
     args: 
-      - '-c'
+      - -c
       - |
-      steps:
- 
         ls
         pwd
-
-#        gcloud compute scp --recurse ./ ftwomicroinstance:~/deploymentscripts/ \
- #        --zone=asia-south1-a \
- #        --tunnel-through-iap
+#         gcloud compute scp --recurse ./ ftwomicroinstance:~/deploymentscripts/ --zone=asia-south1-a --tunnel-through-iap
+#  #     # gcloud compute ssh ftwomicroinstance --zone=asia-south1-a --project jmc-devsecops --command 'chmod 777 ~/deploymentscripts/deployment.sh'
+ 
+ 
