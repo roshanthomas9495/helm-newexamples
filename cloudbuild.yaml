@@ -6,6 +6,4 @@ steps:
       - |
         gcloud compute scp --recurse ./ ftwomicroinstance:~/deploymentscripts/hello-world/ --zone=asia-south1-a --tunnel-through-iap
  #       # gcloud compute ssh ftwomicroinstance --zone=asia-south1-a --project jmc-devsecops --command 'chmod 777 ~/deploymentscripts/deployment.sh'
- 
- 
 
