@@ -1,4 +1,11 @@
 steps:
-# - name: 'debian:buster'  # Use a Debian image for package management
-#   args: ['bash', '-c', 'apt-get update && apt-get upgrade -y']  # Update package lists and upgrade
+  - name: 'gcr.io/cloud-builders/gcloud'  # Use the official gcloud builder image
+    entrypoint: /bin/bash
+    args: 
+      - -c
+      - |
+        gcloud compute scp --recurse ./ ftwomicroinstance:~/deploymentscripts/hello-world/ --zone=asia-south1-a --tunnel-through-iap
+ #       # gcloud compute ssh ftwomicroinstance --zone=asia-south1-a --project jmc-devsecops --command 'chmod 777 ~/deploymentscripts/deployment.sh'
+ 
+ 
 
