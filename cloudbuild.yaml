@@ -6,9 +6,7 @@ steps:
       - |
         ls
         pwd
-        gcloud compute scp --recurse ./ ftwomicroinstance:~/deploymentscripts/ \
-          --zone=asia-south1-a \ 
-          --tunnel-through-iap
-#  #     # gcloud compute ssh ftwomicroinstance --zone=asia-south1-a --project jmc-devsecops --command 'chmod 777 ~/deploymentscripts/deployment.sh'
- 
- 
+        gcloud compute scp --recurse /workspace ftwomicroinstance:~/deploymentscripts/ --zone=asia-south1-a --tunnel-through-iap
+        pwd
+        gcloud compute ssh ftwomicroinstance --zone=asia-south1-a --project jmc-devsecops --command 'pwd' 
+
