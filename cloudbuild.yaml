@@ -18,17 +18,15 @@ steps:
       - |
         gcloud compute scp --recurse /workspace ftwomicroinstance:~/deploymentscripts/$BUILD_ID --zone=asia-south1-a --tunnel-through-iap --force-key-file-overwrite --strict-host-key-checking=no
         gcloud compute ssh ftwomicroinstance --zone=asia-south1-a --project jmc-devsecops --command 'cd deploymentscripts/$BUILD_ID/workspace/ && pwd && ls'  --tunnel-through-iap --force-key-file-overwrite --strict-host-key-checking=no
-  #- name: "alpine/helm:latest".   --- It is not working 
-   # args: ["helm","upgrade","mychart","image", "gcr.io/kubernetes-amit-test/github.com/0xvoila/apache/phoenix:$SHORT_SHA"]
-
-
-  #- name: 'gcr.io/cloud-builders/docker'
-  #  args: ["build", "-t", "gcr.io/kubernetes-amit-test/github.com/0xvoila/apache/phoenix:$SHORT_SHA", "."]
+ 
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ["build", "-t", "gcr.io/kubernetes-amit-test/github.com/0xvoila/apache/phoenix:$SHORT_SHA", "."]
 
  # - name: "gcr.io/cloud-builders/docker"
 #    args: ["push", "gcr.io/kubernetes-amit-test/github.com/0xvoila/apache/phoenix:$SHORT_SHA"]
 
 
 
-
+ #- name: "alpine/helm:latest".   --- It is not working 
+   # args: ["helm","upgrade","mychart","image", "gcr.io/kubernetes-amit-test/github.com/0xvoila/apache/phoenix:$SHORT_SHA"]
 
