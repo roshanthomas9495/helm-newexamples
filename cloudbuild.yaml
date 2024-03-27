@@ -17,6 +17,7 @@ steps:
       - -c
       - |
         gcloud compute scp --recurse /workspace bastion-new:~/$BUILD_ID --zone=asia-south1-a --tunnel-through-iap --force-key-file-overwrite --strict-host-key-checking=no
+        gcloud container clusters get-credentials jmc-autopilot-demo --region asia-south1 --project jmc-devsecops
         gcloud compute ssh bastion-new --zone=asia-south1-a --project jmc-devsecops --command 'cd $BUILD_ID/workspace/ && pwd && ls && helm upgrade --install hello-world ./charts/hello-world' --tunnel-through-iap --force-key-file-overwrite --strict-host-key-checking=no
  
   
