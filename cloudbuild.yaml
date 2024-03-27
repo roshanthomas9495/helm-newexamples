@@ -10,7 +10,7 @@ steps:
         echo "All previous Keys deleted from Cloudbuild's profile"
         
         echo " Creating build-id folder with commit-id=$COMMIT_SHA and build-id=$BUILD_ID and revison_id=$REVISION_ID"
-        gcloud compute ssh bastion-new --zone=asia-south1-a --project jmc-devsecops --command ' mkdir -m 777 deploymentscripts/$BUILD_ID && ls '  --tunnel-through-iap --force-key-file-overwrite --strict-host-key-checking=no
+        gcloud compute ssh bastion-new --zone=asia-south1-a --project jmc-devsecops --command ' mkdir -m 777 $BUILD_ID && ls '  --tunnel-through-iap --force-key-file-overwrite --strict-host-key-checking=no
   - name: 'gcr.io/cloud-builders/gcloud'  # Use the official gcloud builder image
     entrypoint: /bin/bash
     args: 
