@@ -16,8 +16,8 @@ steps:
     args: 
       - -c
       - |
-        gcloud compute scp --recurse /workspace bastion-new:~/deploymentscripts/$BUILD_ID --zone=asia-south1-a --tunnel-through-iap --force-key-file-overwrite --strict-host-key-checking=no
-        gcloud compute ssh bastion-new --zone=asia-south1-a --project jmc-devsecops --command 'cd deploymentscripts/$BUILD_ID/workspace/ && pwd && ls'  --tunnel-through-iap --force-key-file-overwrite --strict-host-key-checking=no
+        gcloud compute scp --recurse /workspace bastion-new:~/$BUILD_ID --zone=asia-south1-a --tunnel-through-iap --force-key-file-overwrite --strict-host-key-checking=no
+        gcloud compute ssh bastion-new --zone=asia-south1-a --project jmc-devsecops --command 'cd $BUILD_ID/workspace/ && pwd && ls'  --tunnel-through-iap --force-key-file-overwrite --strict-host-key-checking=no
  
   
 
